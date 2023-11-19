@@ -6,15 +6,16 @@ import { AiFillBug } from "react-icons/ai";
 
 const NavBar = () => {
   const currentPath = usePathname();
+  console.log(currentPath);
 
   const links = [
     {
       label: "Dashboard",
-      href: "/",
+      href: "/dashboard",
     },
     {
       label: "Issues",
-      href: "/",
+      href: "/issues",
     },
   ];
 
@@ -27,8 +28,10 @@ const NavBar = () => {
         {links.map((link) => (
           <Link
             key={link.href}
-            href={link.href}
-            className="text-zinc-500 hover:text-zinc-900 transitions-colors">
+            className={`${
+              link.href === currentPath ? "text-zinc-900" : "text-zinc-500"
+            } hover:text-zinc-800 transition-colors`}
+            href={link.href}>
             {link.label}
           </Link>
         ))}
